@@ -51,3 +51,10 @@ function postToTwitter(imageData){
 setInterval(function(){ 
 	getPost()
 }, 3600000);
+
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end(imageInfo[0]);
+});
+server.listen(3000);
