@@ -55,6 +55,6 @@ setInterval(function(){
 const http = require('http');
 const server = http.createServer((req, res) => {
   res.writeHead(200);
-  res.end(imageInfo[0]);
+  res.end("DailyRem is running");
 });
 server.listen(3000);
