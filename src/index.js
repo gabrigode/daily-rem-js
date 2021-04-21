@@ -51,3 +51,5 @@ function postToTwitter(imageData) {
 setInterval(function () {
     getPost()
 }, 3600000);
+
+run(host='0.0.0.0', port=os.environ.get('PORT', '5000'))
