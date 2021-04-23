@@ -1,5 +1,4 @@
 const Twit = require('twit');
-
 const getImage = require("./getImage")
 const getBase64Image = require("./getBase64Image");
 
@@ -11,18 +10,20 @@ const Twitter = new Twit({
 })
 
 let imageInfo
+const getBase64Image = require("./getBase64Image");
 
 function getPost() {
-    Promise.all([getImage])
+    Promise.all([getImage(url)])
         .then((data) => {
-            imageInfo = data
-            Promise.all([getBase64Image(data[0].large_file_url)])
+            imageInfo = data[0]
+            console.log(imageInfo)
+            Promise.all([getBase64Image(imageInfo.large_file_url)])
                 .then((imageData) => {
                     postToTwitter(imageData[0])
                 }
-                )
+            )
         }
-        )
+    )
 }
 
 function postToTwitter(imageData) {

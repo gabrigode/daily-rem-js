@@ -1,5 +1,4 @@
 const fetch = require("node-fetch");
-const url = "https://danbooru.donmai.us/posts/random.json?tags=rem_(re:zero)+rating:safe"
 
 const getImage = async url => {
     try {
@@ -13,5 +12,5 @@ const getImage = async url => {
     }
 }
 
-module.exports = getImage(url)
+module.exports = getImage
 
