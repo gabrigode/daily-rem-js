@@ -19,11 +19,11 @@ function getPost() {
             console.log(imageInfo)
             Promise.all([getBase64Image(imageInfo.large_file_url)])
                 .then((imageData) => {
-                    postToTwitter(imageData[0])
+                    postToTwitter(imageData)
                 }
-            )
+                )
         }
-    )
+        )
 }
 
 function postToTwitter(imageData) {
