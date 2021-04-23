@@ -10,7 +10,7 @@ const Twitter = new Twit({
 })
 
 let imageInfo
-const getBase64Image = require("./getBase64Image");
+const url = "https://danbooru.donmai.us/posts/random.json?tags=rem_(re:zero)+rating:safe"
 
 function getPost() {
     Promise.all([getImage(url)])
