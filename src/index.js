@@ -27,7 +27,6 @@ function getPost() {
 }
 
 function postToTwitter(imageData) {
-    console.log("ImageInfo", imageInfo)
 
     Twitter.post('media/upload', { media_data: imageData }, function (err, data, response) {
 
@@ -36,14 +35,14 @@ function postToTwitter(imageData) {
 
         Twitter.post('media/metadata/create', meta_params, function () {
             try {
-                const params = { status: `Artist: ${imageInfo[0].tag_string_artist} \nSource: ${imageInfo[0].source}`, media_ids: [mediaIdStr] }
+                const params = { status: `Artist: ${imageInfo.tag_string_artist} \nSource: ${imageInfo.source}`, media_ids: [mediaIdStr] }
 
                 Twitter.post('statuses/update', params, function (err, data, response) {
                     console.log("New post", data)
                 })
             }
             catch (error) {
-                console.log("A error has occurred while posting")
+                console.log("A error has occurred while posting", error)
             }
         })
     })
