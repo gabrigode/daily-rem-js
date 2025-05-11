@@ -11,7 +11,7 @@ const main = async () => {
 
     console.log('Danbooru post data:', { tag_string_artist, large_file_url });
 
-    twitterService.tweetWithImageUrl(tag_string_artist, imageBuffer);
+    await twitterService.tweetWithImageUrl(tag_string_artist, imageBuffer);
 
     console.log('Tweet sent successfully in', new Date().toLocaleString());
   } catch (err) {
