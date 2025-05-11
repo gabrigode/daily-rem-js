@@ -8,7 +8,8 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier": "prettier --write .",
-    "start": "node --env-file=.env dist/index.js"
+    "start": "node --env-file=.env dist/index.js",
+    "prod": "npm run build && node dist/index.js"
   },
   "author": "",
   "license": "ISC",
