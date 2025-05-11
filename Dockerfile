@@ -1,19 +1,22 @@
-FROM node:24
+FROM node:24-alpine
 
-RUN apt-get update && apt-get install -y cron
-
+# Set the working directory
 WORKDIR /app
 
-COPY . .
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
-COPY ./cronfile /etc/cron.d/bot-cron
+# Copy the rest of the application code
+COPY . .
 
-RUN chmod 0644 /etc/cron.d/bot-cron
+# Build the TypeScript code
+RUN npm run build
 
-RUN crontab /etc/cron.d/bot-cron
+# Expose the application port (if needed)
+EXPOSE 3000
 
-RUN touch /var/log/cron.log
-
-CMD cron && tail -f /var/log/cron.log
+# Start the application
+CMD ["npm", "start"]

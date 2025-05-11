@@ -1,6 +1,7 @@
 import DanbooruService from './services/danbooru';
 import TwitterService from './services/twitter';
 import ImageHelper from './helpers/image';
+import cron from 'node-cron';
 
 const main = async () => {
   const twitterService = new TwitterService();
@@ -18,4 +19,11 @@ const main = async () => {
     console.error('Error in main function:', err);
   }
 };
-main();
+
+// Schedule the main function to run every hour
+cron.schedule('0 * * * *', () => {
+  console.log('Running scheduled task at', new Date().toLocaleString());
+  main();
+});
+
+console.log('Cron job scheduled. The script will run every hour.');

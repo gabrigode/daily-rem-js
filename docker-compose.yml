@@ -1,14 +1,14 @@
 version: '3.8'
 
 services:
-  daily-rem-bot:
+  daily-rem:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: daily-rem-bot
     env_file:
       - .env
     volumes:
-      - ./cronfile:/etc/cron.d/bot-cron
-      - ./logs:/var/log
+      - .:/app
+    working_dir: /app
+    command: npm start
     restart: always
