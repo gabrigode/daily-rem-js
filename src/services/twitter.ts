@@ -22,6 +22,7 @@ class TwitterService {
       });
     } catch (err) {
       console.error('Error tweeting:', err);
+      throw err;
     }
   }
 }
