@@ -1,7 +1,11 @@
 class DanbooruService {
   static getPost = async () => {
     try {
-      const response = await fetch(process.env.DANBOORU_API_URL || '');
+      const apiUrl = process.env.DANBOORU_API_URL;
+      if (!apiUrl) {
+        throw new Error('DANBOORU_API_URL is not set or is empty');
+      }
+      const response = await fetch(apiUrl);
 
       const data = await response.json();
 
