@@ -1,7 +1,7 @@
 FROM node:24
 
-# Set the working directory to the root of the container
-WORKDIR /
+# Set the working directory to /app
+WORKDIR /app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
