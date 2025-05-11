@@ -15,8 +15,11 @@ COPY . .
 # Build the TypeScript code
 RUN npm run build
 
+# Verify that the dist folder exists
+RUN test -d dist || (echo "Build failed: dist folder not found" && exit 1)
+
 # Expose the application port (if needed)
 EXPOSE 3000
 
 # Start the application
-CMD ["npm", "run", "prod"]
+CMD ["node", "dist/index.js"]
