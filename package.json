@@ -8,11 +8,13 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier": "prettier --write .",
-    "start": "node --env-file=.env dist/index.js"
+    "start": "node --env-file=.env dist/index.js",
+    "prod": "npm run build && node dist/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node-cron": "^4.0.2",
     "twitter-api-v2": "^1.23.0"
   },
   "devDependencies": {
